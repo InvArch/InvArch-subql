@@ -1,0 +1,17 @@
+type Block @entity {
+
+  id: ID! # Block hash
+
+  number: Int! # Block number
+
+  timestamp: String # Block timestamp
+
+  parentHash: String # Hash of parent block
+
+  stateRoot: String
+
+  field5: Boolean
+
+
+
+}
