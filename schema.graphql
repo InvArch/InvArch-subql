@@ -1,17 +1,75 @@
+"Represents a Substrate block"
 type Block @entity {
+  "Block hash"
+  id: ID!
 
-  id: ID! # Block hash
+  "Block number"
+  number: Int! 
 
-  number: Int! # Block number
+  "Block timestamp"
+  timestamp: String
 
-  timestamp: String # Block timestamp
-
-  parentHash: String # Hash of parent block
-
+  "Hash of parent block"
+  parentHash: String
   stateRoot: String
+}
 
-  field5: Boolean
+"An INV4 Created event"
+type Created @entity {
+  "<block_hash>-<event_index>"
+  id: ID!
 
+  "Account that created the IP set"
+  account: String
 
+  "ID of the new IP set"
+  ipsId: String
+}
 
+"An INV4 Deleted event"
+type Deleted @entity {
+  "<block_hash>-<event_index>"
+  id: ID!
+
+  "Account that deleted the IP set"
+  account: String
+
+  "ID of the IP set that was deleted"
+  ipsId: String
+}
+
+"An INV4 Appended event"
+type Appended @entity {
+  "<block_hash>-<event_index>"
+  id: ID!
+
+  "Account that called the append() function (multisig account)"
+  account: String
+
+  "ID of the IP set that files were appended to"
+  ipsId: String
+
+  "Optional metadata"
+  metadata: String
+
+  "List of IPF's added to the IP set"
+  assets: String
+}
+
+"An INV4 Removed event"
+type Removed @entity {
+  "<block_hash>-<event_index>"
+  id: ID!
+
+  "Account that called the remove() function (multisig account)"
+  account: String
+
+  "ID of the IP set that files were appended to"
+  ipsId: String
+
+  "Either the existing IP set metadata, or new metadata that was set with the call to remove()"
+  metadata: String
+
+  "List of IPF's removed from the IP set"
+  assets: String
 }

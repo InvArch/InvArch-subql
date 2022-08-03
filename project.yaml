@@ -14,16 +14,16 @@ schema:
   file: ./schema.graphql
 network:
   # Polkadot
-  chainId: '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3'
-  endpoint: 'wss://polkadot.api.onfinality.io/public-ws'
+  # chainId: '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3'
+  # endpoint: 'wss://polkadot.api.onfinality.io/public-ws'
 
   # Brainstorm
   # chainId: '0x7c91172ebbe284db5d1394136958ebdf46f475c1473d206d31895e81d17361b2'
   # endpoint: 'wss://brainstorm.invarch.network'
 
   # Local Node
-  # chainId: '0x6614e2333d4b80fb989a1a0115873d620d36a1273d3c8d8f511cc3e7f6534d85'
-  # endpoint: 'ws://mac.localhost:9944'
+  chainId: '0x6614e2333d4b80fb989a1a0115873d620d36a1273d3c8d8f511cc3e7f6534d85'
+  endpoint: 'ws://127.0.0.1:9944'
   dictionary: 'https://api.subquery.network/sq/subquery/polkadot-dictionary'
 dataSources:
   - kind: substrate/Runtime
@@ -33,10 +33,25 @@ dataSources:
       handlers:
         - handler: handleBlock
           kind: substrate/BlockHandler
-        # - handler: handleEvent
-        #   kind: substrate/EventHandler
-        #   filter:
-        #     module: balances
-        #     method: Deposit
+        - handler: handleCreated
+          kind: substrate/EventHandler
+          filter:
+            module: inv4
+            method: Created
+        - handler: handleDestroyed
+          kind: substrate/EventHandler
+          filter:
+            module: inv4
+            method: Destroyed
+        - handler: handleAppended
+          kind: substrate/EventHandler
+          filter:
+            module: inv4
+            method: Appended
+        - handler: handleRemoved
+          kind: substrate/EventHandler
+          filter:
+            module: inv4
+            method: Removed
         # - handler: handleCall
         #   kind: substrate/CallHandler
