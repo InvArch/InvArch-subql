@@ -22,7 +22,7 @@ network:
   # endpoint: 'wss://brainstorm.invarch.network'
 
   # Local Node
-  chainId: '0x6614e2333d4b80fb989a1a0115873d620d36a1273d3c8d8f511cc3e7f6534d85'
+  chainId: '0x27214161c6530755f4da1d5ea71601882045836800431529da6749d90cc8297c'
   endpoint: 'ws://127.0.0.1:9944'
   dictionary: 'https://api.subquery.network/sq/subquery/polkadot-dictionary'
 dataSources:
@@ -33,25 +33,20 @@ dataSources:
       handlers:
         - handler: handleBlock
           kind: substrate/BlockHandler
-        - handler: handleCreated
+        - handler: handleIPSCreated
           kind: substrate/EventHandler
           filter:
             module: inv4
-            method: Created
-        - handler: handleDestroyed
+            method: IPSCreated
+        - handler: handleMinted
+          kind: substrate/EventHandler
+          filter:
+            module: ipf
+            method: Minted
+        - handler: handleAppendedToIPS
           kind: substrate/EventHandler
           filter:
             module: inv4
-            method: Destroyed
-        - handler: handleAppended
-          kind: substrate/EventHandler
-          filter:
-            module: inv4
-            method: Appended
-        - handler: handleRemoved
-          kind: substrate/EventHandler
-          filter:
-            module: inv4
-            method: Removed
+            method: AppendedToIPS
         # - handler: handleCall
         #   kind: substrate/CallHandler
