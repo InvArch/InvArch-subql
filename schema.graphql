@@ -20,16 +20,25 @@ type IpSet @entity {
   id: ID!
 
   "IP files in this IP set"
-  assets: [IpFile] @derivedFrom(field: "ipSet")
+  assets: [Asset] @derivedFrom(field: "ipSet")
+
+  "Are replicas of this IPS allowed. Will be null until set manually"
+  allowReplica: Boolean
 
   "IPS creation timestamp"
   timestamp: String
+
+  "The parent entity of this IP set, if any"
+  parent: String
 }
 
 "An INV4 IP file"
-type IpFile @entity {
+type Asset implements Asset @entity {
   "IPF ID"
   id: ID!
+
+  "Asset type"
+  type: String
 
   "IPF owner"
   owner: String
@@ -44,6 +53,13 @@ type IpFile @entity {
   timestamp: String
 
   ipSet: IpSet
+}
+
+enum AssetType {
+  IPF
+  RMRKNFT
+  RMRKCOLLECTION
+  IPS
 }
 
 
