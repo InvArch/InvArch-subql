@@ -33,7 +33,7 @@ type IpSet @entity {
 }
 
 "An INV4 IP file"
-type Asset implements Asset @entity {
+type Asset @entity {
   "IPF ID"
   id: ID!
 
