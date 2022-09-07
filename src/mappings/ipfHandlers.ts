@@ -1,5 +1,5 @@
 import { SubstrateEvent } from "@subql/types";
-import { Block, IpSet, Asset } from "../types";
+import { IpSet, Asset } from "../types";
 
 export async function handleMinted(event: SubstrateEvent): Promise<void> {
     const { event: { data: [account, ipfId, ipfsHash] }} = event;

@@ -24,7 +24,8 @@ network:
   # Tinkernet
   chainId: '0xd42e9606a995dfe433dc7955dc2a70f495f350f373daa200098ae84437816ad2'
   # endpoint: 'ws://34.202.164.131:9944'
-  endpoint: 'wss://tinker.invarch.network/'
+  endpoint: 'wss://node-6968552592343965696.sz.onfinality.io/ws?apikey=8c65a305-003e-4956-ac74-f9c0a3ec526e'
+  # endpoint: 'wss://tinker.invarch.network/'
 
   # Local Node
   # chainId: '0x27214161c6530755f4da1d5ea71601882045836800431529da6749d90cc8297c'
@@ -32,7 +33,7 @@ network:
   # dictionary: 'https://api.subquery.network/sq/subquery/polkadot-dictionary'
 dataSources:
   - kind: substrate/Runtime
-    startBlock: 155948
+    startBlock: 1
     mapping:
       file: ./dist/index.js
       handlers:

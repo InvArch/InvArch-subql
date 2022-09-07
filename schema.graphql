@@ -1,18 +1,18 @@
-"Represents a Substrate block"
-type Block @entity {
-  "Block hash"
-  id: ID!
+# "Represents a Substrate block"
+# type Block @entity {
+#   "Block hash"
+#   id: ID!
 
-  "Block number"
-  blockNumber: Int! 
+#   "Block number"
+#   blockNumber: Int! 
 
-  "Block timestamp"
-  timestamp: String
+#   "Block timestamp"
+#   timestamp: String
 
-  "Hash of parent block"
-  parentHash: String
-  stateRoot: String
-}
+#   "Hash of parent block"
+#   parentHash: String
+#   stateRoot: String
+# }
 
 "An INV4 IP set"
 type IpSet @entity {
@@ -55,12 +55,12 @@ type Asset @entity {
   ipSet: IpSet
 }
 
-enum AssetType {
-  IPF
-  RMRKNFT
-  RMRKCOLLECTION
-  IPS
-}
+# enum AssetType {
+#   IPF
+#   RMRKNFT
+#   RMRKCOLLECTION
+#   IPS
+# }
 
 
 
